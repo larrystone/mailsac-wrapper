@@ -21,7 +21,7 @@ mailbox.getInbox(emailAddress, filterText, t)
     console.log('foundEmail :', foundEmail);
   });
 
-// get the full details (content) of a mail message
+// get the body of a mail message (exclude attachments)
 mailbox.getMessage(emailAddress, messageId)
   .then(function(fullMessage) {
     console.log('full message :', fullMessage);
