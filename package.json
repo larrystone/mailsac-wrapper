@@ -1,13 +1,11 @@
 {
   "name": "mailsac-wrapper",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "lib/index.js",
   "scripts": {
     "build": "node_modules/babel-cli/bin/babel.js src --out-dir lib",
     "test": "echo 'no test'",
-    "preversion": "npm test",
-    "version": "npm run build && git add -A src",
-    "postversion": "git push && git push --tags && rm -rf build/temp"
+    "prepublish": "npm test && npm run build"
   },
   "repository": "https://github.com/larrystone/mailsac-wrapper.git",
   "author": "lawal lanre <larrystonegroup@gmail.com>",

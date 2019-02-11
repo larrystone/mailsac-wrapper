@@ -21,7 +21,7 @@ class MailBox {
     }
   }
 
-  async getInbox(emailAddress, filter, t = { wait: () => Promise.resolve('k') }) {
+  async getInbox(emailAddress, filter, t = { wait: (time) => Promise.resolve(time) }) {
     let forgotPasswordEmail = null;
     let tries = 0;
 
@@ -56,6 +56,10 @@ class MailBox {
     } catch (err) {
       throw new Error('error deleting mail', err);
     }
+  }
+
+  async deleteEmail(emailAddress) {
+    throw new Error('Not implemented');
   }
 }
 
