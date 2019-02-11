@@ -1,6 +1,6 @@
 {
   "name": "mailsac-wrapper",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "lib/index.js",
   "scripts": {
     "build": "node_modules/babel-cli/bin/babel.js src --out-dir lib",
