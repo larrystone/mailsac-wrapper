@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { baseUrl } from './constants';
 
 class MailBox {
-  constructor(baseUrl = 'https://mailsac.com/api') {
-    this.baseUrl = baseUrl;
+  constructor(base = baseUrl) {
+    this.baseUrl = base;
     // TODO set mailsac configs for axios here
     this.currentDate = new Date().getTime();
   }
@@ -43,7 +44,7 @@ class MailBox {
 
   async getMessage(emailAddress, id) {
     try {
-      const message = await axios.get(`${this.baseUrl}/dirty/${emailAddress}/${id}`);
+      const { data: message } = await axios.get(`${this.baseUrl}/dirty/${emailAddress}/${id}`);
       return message;
     } catch (err) {
       throw new Error('error fetching mail', err);
@@ -52,7 +53,7 @@ class MailBox {
 
   async deleteMessage(emailAddress, id) {
     try {
-      await axios.delete(`${this.baseUrl}/addresses/${emailAddress}/messages/${id}`);
+      return await axios.delete(`${this.baseUrl}/addresses/${emailAddress}/messages/${id}`);
     } catch (err) {
       throw new Error('error deleting mail', err);
     }
