@@ -26,7 +26,7 @@ class MailBox {
     let forgotPasswordEmail = null;
     let tries = 0;
 
-    while (forgotPasswordEmail == null && tries < 12) {
+    while (forgotPasswordEmail == null && tries < 24) {
       await t.wait(5000);
 
       const { data } = await axios.get(`${this.baseUrl}/addresses/${emailAddress}/messages`);
@@ -42,9 +42,9 @@ class MailBox {
     return forgotPasswordEmail;
   }
 
-  async getMessage(emailAddress, id) {
+  async getMessage(emailAddress, id, mode = 'dirty') {
     try {
-      const { data: message } = await axios.get(`${this.baseUrl}/dirty/${emailAddress}/${id}`);
+      const { data: message } = await axios.get(`${this.baseUrl}/${mode}/${emailAddress}/${id}`);
       return message;
     } catch (err) {
       throw new Error('error fetching mail', err);
